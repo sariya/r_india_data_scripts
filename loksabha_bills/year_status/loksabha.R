@@ -9,7 +9,6 @@ library(dplyr)
 library(reshape2)
 
 df<-read.csv("datafile.csv",header = TRUE,strip.white=TRUE)
-df<-read.csv("small.csv",header = TRUE,strip.white=TRUE)
 
 dfnew <- data.frame(lapply(df, trimws))
 dim(df)
@@ -31,7 +30,7 @@ modified_fd<-apply(only_columns, 2, function(x) gsub("^$|^ $", "Unavailable", x)
 
 df_formelt<-as.data.frame(modified_fd)
 
-factor(df_formelt$Status)
+#factor(df_formelt$Status)
 
 ggplot(df_formelt,aes(x=factor(df_formelt$Bill.Year) ,fill=factor(df_formelt$Status) ) ) + 
   geom_bar(position = "dodge", width = 0.9)+
